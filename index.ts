@@ -1,11 +1,19 @@
+import dotenv from "dotenv";
 import express from "express";
-import path from "path";
 import { ApolloServer } from "apollo-server-express";
 import STARWARSAPI from "./API/starwars-API";
 import typeDefs from "./common/typedefs";
 import resolvers from "./common/resolvers";
 
+dotenv.config();
+
 const app = express();
+
+// CORS configuration
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true,
+};
 
 const server = new ApolloServer({
   typeDefs,
@@ -15,7 +23,7 @@ const server = new ApolloServer({
   }),
 });
 
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, cors: corsOptions });
 
 app.listen({ port: process.env.PORT || 4000 }, () => {
   console.log(`🚀 Server ready at port ${process.env.PORT || 4000}`);

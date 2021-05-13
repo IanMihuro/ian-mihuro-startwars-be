@@ -1,12 +1,12 @@
 //TODO revisit this and place appropriate data types
-const resolvers = {
+import type { IResolvers } from "apollo-server-express";
+
+const resolvers: IResolvers = {
   Query: {
-    person: async (_source: any, { name }: any, { dataSources }: any) =>
-      dataSources.STARWARSAPI.getPerson(name),
-    people: async (_source: any, _args: any, { dataSources }: any) =>
-      dataSources.STARWARSAPI.getAllPeople(),
-    nextPage: async (_source: any, { page }: any, { dataSources }: any) =>
-      dataSources.STARWARSAPI.nextPage(page),
+    person: async (_, { name }, { dataSources }) =>
+      await dataSources.STARWARSAPI.getPerson(name),
+    people: async (_, { page }, { dataSources }) =>
+      await dataSources.STARWARSAPI.getPeople(page),
   },
 };
 

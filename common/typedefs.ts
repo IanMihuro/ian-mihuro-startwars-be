@@ -18,8 +18,7 @@ const typeDefs = gql`
 
   type Query {
     person(name: String!): People
-    people: People
-    nextPage(page: Int!): People
+    people(page: Int!): People
   }
 `;
 

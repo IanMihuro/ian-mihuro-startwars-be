@@ -11,7 +11,7 @@ const typeDefs = gql`
 
   type People {
     count: Int!
-    next: String!
+    next: String
     previous: String
     results: [Person]
   }

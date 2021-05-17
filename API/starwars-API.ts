@@ -9,8 +9,8 @@ class STARWARSAPI extends RESTDataSource {
     return await this.get(`/people/?page=${page}`);
   }
 
-  async getPerson(name: string) {
-    return await this.get(`/people/?search=${name}`);
+  async getPerson(name: string, page: Number) {
+    return await this.get(`/people/?search=${name}&page=${page}`);
   }
 }
 

@@ -1,4 +1,3 @@
-//TODO revisit this and place appropriate data types
 import type { IResolvers } from "apollo-server-express";
 
 const resolvers: IResolvers = {

@@ -1,12 +1,12 @@
 import { RESTDataSource } from "apollo-datasource-rest";
 
 class STARWARSAPI extends RESTDataSource {
-  constructor() {
+  constructor(baseURL: string) {
     super();
-    this.baseURL = process.env.SWAP_API_BASE_URL;
+    this.baseURL = baseURL;
   }
   async getPeople(page: Number) {
-    return await this.get(`/people/?page=${page}`);
+    return this.get(`/people/?page=${page}`);
   }
 
   async getPerson(name: string, page: Number) {

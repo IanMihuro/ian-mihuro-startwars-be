@@ -19,7 +19,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources: () => ({
-    STARWARSAPI: new STARWARSAPI(),
+    STARWARSAPI: new STARWARSAPI(
+      process.env.SWAP_API_BASE_URL || `https://swapi.dev/api`
+    ),
   }),
 });
 
